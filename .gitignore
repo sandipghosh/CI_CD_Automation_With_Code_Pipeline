@@ -1,0 +1,50 @@
+# ---- Terraform State Files ----
+*.tfstate
+*.tfstate.*
+terraform.tfstate.backup
+crash.log
+crash.*.log
+
+# ---- Terraform Plan Files ----
+*.tfplan
+*.tfplan.*
+
+# ---- Local Terraform Configuration ----
+.terraform/
+.terraformrc
+terraform.rc
+.terraform.lock.hcl
+
+# ---- Environment Variables and Overrides ----
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ---- Sensitive Files ----
+secrets.auto.tfvars
+*.pem
+*.key
+*.crt
+
+# ---- IDE / Editor Files ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# ---- OS-specific Files ----
+.DS_Store
+Thumbs.db
+
+# ---- Logs / Output ----
+*.log
+output.txt
+
+# ---- Terraform Provider Plugin Cache (optional, can be re-downloaded) ----
+.terraform.d/
+.keypair/

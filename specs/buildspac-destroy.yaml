@@ -1,0 +1,25 @@
+version: 0.2
+
+env:
+  variables:
+    CODE_SRC_DIR: "."
+    
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - sudo yum update -y 
+      - sudo yum install -y yum-utils shadow-utils
+      - sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+      - sudo yum install -y terraform
+
+  build:
+    commands:
+      - "cd ${CODEBUILD_SRC_DIR}/${CODE_SRC_DIR}"
+      - "terraform init"
+      - "terraform destroy --auto-approve"
+
+artifacts:
+  files:
+    - '**/*'
