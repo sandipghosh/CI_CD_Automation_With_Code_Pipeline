@@ -16,7 +16,6 @@ aws-code-pipeline/terraform.tfstate
 | `$AWS_DEFAULT_REGION`                | Region used by the build             | `ap-south-1`                        |
 | `$CODEBUILD_SOURCE_REPO_URL`         | Repo clone URL                       | `https://github.com/org/repo.git`   |
 
-
 ## Steps to perform the terraform automations
 
 1. Create terraform infrastructure for aws ececute the `terraform init` command
@@ -39,3 +38,4 @@ aws-code-pipeline/terraform.tfstate
     - Apply Stage --> Terraform-Build-Apply --> Terraform-Build-Plan-Artifact
     - Manual Approval
     - Destroy Stage --> Terraform-Build-Destroy --> SourceArtifact
+
