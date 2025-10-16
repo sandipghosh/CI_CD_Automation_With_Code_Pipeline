@@ -16,5 +16,26 @@ aws-code-pipeline/terraform.tfstate
 | `$AWS_DEFAULT_REGION`                | Region used by the build             | `ap-south-1`                        |
 | `$CODEBUILD_SOURCE_REPO_URL`         | Repo clone URL                       | `https://github.com/org/repo.git`   |
 
+## Steps to perform the terraform automations
 
-Testing
+1. Create terraform infrastructure for aws ececute the `terraform init` command
+2. Setup s3 backend configuration and execure the `terraform init -reconfigure` command
+3. Prepare the following aws code build spec files
+    - buildspec-plan.yaml
+    - buildspec-apply.yaml
+    - buildspec-destroy.yaml
+4. Create a GitHub repository and push all the code base into it 
+5. In aws console, create IAM role for code build service with full administrative permissions
+6. Create 3 different code build project as follows
+    - Terraform-Build-Plan
+    - Terraform-Build-Apply
+    - Terraform-Build-Destroy
+7. Create a code pipeline 
+8. Modify the code pipeline service role to add full administrative pemissions
+9. Add the following stages to the pipeline
+    - Source Stage --> Source --> SourceArtifact
+    - Plan Stage --> Terraform-Build-Plan --> Terraform-Build-Plan-Artifact
+    - Apply Stage --> Terraform-Build-Apply --> Terraform-Build-Plan-Artifact
+    - Manual Approval
+    - Destroy Stage --> Terraform-Build-Destroy --> SourceArtifact
+
